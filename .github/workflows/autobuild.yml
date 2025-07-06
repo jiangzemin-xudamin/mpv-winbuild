@@ -21,7 +21,7 @@ jobs:
               inputs: {
               winbuild_repo: "dyphire/mpv-winbuild-cmake",
               winbuild_ref: "patch",
-              build_target: "all-64bit",
+              build_target: "64bit-v3",
               compiler: "clang",
               needclean: false,
               no_save_cache: false,
