@@ -1,0 +1,24 @@
+From 80e616200effd5b221bded389f9395dfaac78bbc Mon Sep 17 00:00:00 2001
+From: dyphire <qimoge@gmail.com>
+Date: Tue, 29 Jul 2025 15:43:35 +0800
+Subject: [PATCH] ffmpeg: add temporary patch
+
+---
+ packages/ffmpeg.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/packages/ffmpeg.cmake b/packages/ffmpeg.cmake
+index 1407476..d79c9c0 100644
+--- a/packages/ffmpeg.cmake
++++ b/packages/ffmpeg.cmake
+@@ -51,6 +51,7 @@ ExternalProject_Add(ffmpeg
+     GIT_CLONE_FLAGS "--sparse --filter=tree:0"
+     GIT_CLONE_POST_COMMAND "sparse-checkout set --no-cone /* !tests/ref/fate"
+     PATCH_COMMAND ${EXEC} git am --3way ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg-*.patch
++          COMMAND ${EXEC} curl -sL https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/20052.patch | git am --3way --whitespace=fix
+     UPDATE_COMMAND ""
+     CONFIGURE_COMMAND ${EXEC} CONF=1 <SOURCE_DIR>/configure
+         --cross-prefix=${TARGET_ARCH}-
+-- 
+2.47.0.windows.1
+
