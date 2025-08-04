@@ -2,7 +2,7 @@ name: autobuild
 
 on: 
    schedule:
-     - cron:  '0 8 * * *'
+     - cron:  '0 10 * * *'
 jobs:
   trigger:
     runs-on: ubuntu-latest
@@ -21,7 +21,7 @@ jobs:
               inputs: {
               winbuild_repo: "dyphire/mpv-winbuild-cmake",
               winbuild_ref: "patch",
-              build_target: "all-64bit",
+              build_target: "64bit-v3",
               compiler: "clang",
               needclean: false,
               no_save_cache: false,
